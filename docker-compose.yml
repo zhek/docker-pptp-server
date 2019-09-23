@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  pptpd:
+    image: server_pptp
+    container_name: server_pptp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./pptpd/pptpd.conf:/etc/pptpd.conf
+      - ./pptpd/pptpd-options:/etc/ppp/pptpd-options
+      - ./pptpd/chap-secrets:/etc/ppp/chap-secrets
+    ports:
+      - 1723:1723
+    privileged: true
+    network_mode: host
+    restart: always
