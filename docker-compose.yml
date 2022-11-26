@@ -11,6 +11,8 @@ services:
       - ./pptpd/pptpd.conf:/etc/pptpd.conf
       - ./pptpd/pptpd-options:/etc/ppp/pptpd-options
       - ./pptpd/chap-secrets:/etc/ppp/chap-secrets
+    environment:
+      ENV_GATEWAY_INTERFACE: ${ENV_GATEWAY_INTERFACE}
     ports:
       - 1723:1723
     privileged: true
